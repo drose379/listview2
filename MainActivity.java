@@ -1,11 +1,13 @@
 package dylanrose60.listview2;
 
+import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,8 +30,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void addToList() {
-        comps.add(new Computer("Macbook Pro","OSX Yosemite"));
-        comps.add(new Computer("ChromeBook","Google"));
+        comps.add(new Computer("Macbook Pro","OSX Yosemite",R.drawable.apple_logo));
+        comps.add(new Computer("ChromeBook","Google",R.drawable.chrome_logo));
     }
 
     public void addToView() {
@@ -58,11 +60,14 @@ public class MainActivity extends ActionBarActivity {
             //Get the views
             TextView model = (TextView) layoutView.findViewById(R.id.model);
             TextView OS = (TextView) layoutView.findViewById(R.id.Os);
+            ImageView img = (ImageView) layoutView.findViewById(R.id.imgbox);
 
             //Set the text
             model.setText(currentComputer.getModel());
             OS.setText(currentComputer.getOS());
 
+            //Set the image
+            img.setImageResource(currentComputer.getImg());
 
             return layoutView;
         }
